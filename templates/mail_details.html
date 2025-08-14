@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Monthly Activity Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Monthly Activity Report</h2>
+    <p>Hello {{ data['username'] }},</p>
+    <p>Here is your quiz activity report for this month:</p>
+
+    <table>
+        <tr>
+            <th>Sr No</th>
+            <th>Quiz ID</th>
+            <th>Date Taken</th>
+            <th>Score</th>
+        </tr>
+        {% for quiz in data['quizzes'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ quiz['name'] }}</td>
+            <td>{{ quiz['date'] }}</td>
+            <td>{{ quiz['score'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p><strong>Total Quizzes Taken:</strong> {{ data['total_quizzes'] }}</p>
+    <p><strong>Average Score:</strong> {{ data['avg_score'] }}</p>
+
+    <p>Thank you for using our platform!</p>
+
+    <div class="footer">
+        <p>&copy; 2025 Quiz Platform | Created at ITM</p>
+    </div>
+</body>
+</html>
